@@ -50,7 +50,7 @@ const fetchAll = async (channel) => {
       const l = messages.length;
       await Promise.all(
         messages.map(async (message) => {
-          // await message.delete();
+          await message.delete();
         })
       );
       console.log(`${l} message(s) supprimé(s) de ${name}`);
