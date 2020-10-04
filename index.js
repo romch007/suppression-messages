@@ -28,7 +28,10 @@ const fetchAll = async (channel) => {
     name: "token",
     message: "Token discord",
   });
-  await client.login(response.token);
+  await client.login(response.token).catch(() => {
+    console.error("Impossible de se connecter. Veuillez vérifier le token.");
+    process.exit(1);
+  });
   const clientId = client.user.id;
   const channels = client.channels.filter((channel) => channel.type === "dm");
   const result = await prompts({
